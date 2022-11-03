@@ -12,5 +12,5 @@ import pandas
 
 # data2.to_excel("val2.xlsx")
 
-data=pandas.read_excel("graph/data1/val.xlsx")
-data.to_excel("graph/data1//valtime.xlsx",columns=["max_time","mean_time"])
+data=pandas.read_excel("data1/val.xlsx")
+data.to_csv("data1//valtime.csv",columns=["max_time","mean_time"])
