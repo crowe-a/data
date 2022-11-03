@@ -11,3 +11,6 @@ import pandas
 # data2=pandas.read_csv("dosyalar/all_features_300_scene_2_complete - Kopya.csv",encoding="UTF-8")
 
 # data2.to_excel("val2.xlsx")
+
+data=pandas.read_excel("graph/data1/val.xlsx")
+data.to_excel("graph/data1//valtime.xlsx",columns=["max_time","mean_time"])
