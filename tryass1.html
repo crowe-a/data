@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var aub={
+"HC": {
+    "SCINCE 1": {"temporal":["mean time","max time"],
+                "sentiment":["1"],
+                "pysholingustic":["118"],
+                "emotion":["11"],
+                "lexical":["15"]
+                }
+      
+  }
+ 
+  
+}
+
+
+
+
+
+
+var subjectObject = {
+  "HC": {
+    "SCINCE 1": ["temporal","sentiment","pysholingustic","emotion","lexical"],
+    "SCINCE 2": ["temporal","sentiment","pysholingustic","emotion","lexical"]
+      
+  },
+  "BD": {
+    "SCINCE 1": ["temporal","sentiment","pysholingustic","emotion","lexical"],
+    "SCINCE 2": ["temporal","sentiment","pysholingustic","emotion","lexical"]
+  }
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+  var chapterSel = document.getElementById("chapter");
+  var featureSel = document.getElementById("features");
+  
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    chapterSel.length = 1;
+    topicSel.length = 1;
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    
+    chapterSel.length = 1;
+    
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+  
+  chapterSel.onchange = function() {
+    
+    var z = aub[subjectSel.value][topicSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+        featureSel.options[featureSel.options.length] = new Option(z[i], z[i]);
+      }
+  }
+  
+}
+</script>
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+
+
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+
+
+
+
+<!-- The flexible grid (content) -->
+<div class="row">
+  <div class="side">
+    <form name="form1" id="form1" action="/action_page.php">
+Subjects: <select name="subject" id="subject">
+    <option value="" selected="selected">Select Class</option>
+  </select>
+  <br><br>
+Topics: <select name="topic" id="topic">
+    <option value="" selected="selected">Select Session</option>
+  </select>
+  <br><br>
+Chapters: <select name="chapter" id="chapter">
+    <option value="" selected="selected">Please select topic first</option>
+  </select>
+  <br><br>
+  
+  feattures: <select name="features" id="features">
+    <option value="" selected="selected">Please select chapters first</option>
+  </select>
+  <br><br>
+  
+</form>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
